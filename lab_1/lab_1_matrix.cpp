@@ -15,7 +15,7 @@ std::vector<std::vector<int>> create_matrix_random(const int n)
     {
         for (int j = 0; j < n; ++j) 
         {
-            matrix[i][j] = rand() % 1000;
+            matrix[i][j] = rand() % 500;
         }
     }
     return matrix;
@@ -64,15 +64,14 @@ std::vector<std::vector<int>> matrix_mult(const std::vector<std::vector<int>>& m
 int main()
 {
     srand(time(nullptr));
-    setlocale(LC_ALL, "Russian");
 
-    std::vector<int> sizes = { 500, 1000, 1500, 2000, 2500 };
+    std::vector<int> sizes = { 100, 250, 500, 750, 1000 };
     int x = 5;
     std::ofstream time_file("average_times.txt");
 
     for (int size : sizes) 
     {
-        auto total_duration = std::chrono::seconds(0);
+        auto total_duration = std::chrono::milliseconds(0);
 
         for (int k = 0; k < x; ++k) 
         {
@@ -82,7 +81,7 @@ int main()
             auto start = std::chrono::high_resolution_clock::now();
             std::vector<std::vector<int>> result_mul = matrix_mult(tmp_A_matrix, tmp_B_matrix, size);
             auto end = std::chrono::high_resolution_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
             total_duration += duration;
 
