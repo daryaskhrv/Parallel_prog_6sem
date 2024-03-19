@@ -21,5 +21,7 @@
 
 ## Лабораторная работа 2
 Процессор: 12th Gen Intel(R) Core(TM) i7-12700H, ~2.3GHz
+
 OpenMP Version: 2002 (3)
+
 Processors: 20, Max threads: 20
